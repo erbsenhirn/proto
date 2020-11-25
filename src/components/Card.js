@@ -15,10 +15,10 @@ const useStyles = makeStyles({
 
 const Card = () => {
   useFirestoreConnect([
-    { collection: 'cards', queryParams: [ 'limitToFirst' ] }
+    { collection: 'Cards', queryParams: [ 'limitToFirst' ] }
   ])
   const firstCard = first(values(
-    useSelector((state) => state.firestore.data.cards)
+    useSelector((state) => state.firestore.data.Cards)
   ))
   const classes = useStyles(firstCard)
 
