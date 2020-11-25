@@ -11,6 +11,8 @@ import {
 import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' // <- needed if using firestore
 import logger from 'redux-logger'
 
+import Card from './Card.js'
+
 
 const fbConfig = {
   apiKey: "AIzaSyA0fG8WrpMayozNZ4KsSh5daU1Ngpkmydc",
@@ -55,9 +57,11 @@ const rrfProps = {
 // Setup react-redux so that connect HOC can be used
 const App = () => {
   return (
-    <div>
-        Hello World!
-    </div>
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <Card />
+      </ReactReduxFirebaseProvider>
+    </Provider>
   );
 }
 
