@@ -1,11 +1,9 @@
-import { Button } from '@material-ui/core';
+import Templates from './views/Templates'
 
 
 const App = () => {
   return (
-    <Button variant="outlined" color="primary">
-      Add Template
-    </Button>
+    <Templates />
   )
 }
 
