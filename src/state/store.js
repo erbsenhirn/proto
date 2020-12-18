@@ -5,7 +5,6 @@ import { firestoreReducer } from 'redux-firestore'
 
 import routerReducer, { history } from './router'
 
-
 const rootReducer = combineReducers({
   router: routerReducer,
   firestore: firestoreReducer,

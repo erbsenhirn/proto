@@ -1,10 +1,11 @@
-import Templates from './views/Templates'
+import React from 'react'
 
+import Editor from './views/Editor'
 
 const App = () => {
   return (
-    <Templates />
+    <Editor />
   )
 }
 
-export default App;
+export default App

@@ -1,21 +1,21 @@
-import { values, first } from 'lodash';
+import React from 'react'
+import { values, first } from 'lodash'
 import { useSelector } from 'react-redux'
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
-import { makeStyles } from '@material-ui/core/styles';
-import { CircularProgress } from '@material-ui/core';
-
+import { CircularProgress } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
   root: props => ({
     height: props.height,
     width: props.width,
-    backgroundColor: props.backgroundColor,
-  }),
-});
+    backgroundColor: props.backgroundColor
+  })
+})
 
 const Card = () => {
   useFirestoreConnect([
-    { collection: 'Cards', queryParams: [ 'limitToFirst' ] }
+    { collection: 'Cards', queryParams: ['limitToFirst'] }
   ])
   const firstCard = first(values(
     useSelector((state) => state.firestore.data.Cards)
@@ -29,7 +29,7 @@ const Card = () => {
     return <CircularProgress />
   }
 
-  return <div className={ classes.root }>Hello World!</div>
+  return <div className={ classes.root }></div>
 }
 
-export default Card;
+export default Card

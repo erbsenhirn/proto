@@ -18,6 +18,12 @@ const Templates = () => {
     return firestore.collection('Templates').add(newTemplate.add())
   }
 
+  function deleteTemplate (templateID) {
+    console.log(templateID)
+    // firestore.collection('Templates').doc(templateID).delete('1L0XZZEY4ETBqMYiWIwl')
+    // return firestore.collection('Templates').doc(templateID).delete()
+  }
+
   /*
   function TemplatePreviews () {
     if (isLoaded(allTemplates) && !isEmpty(allTemplates)) {
@@ -45,9 +51,11 @@ const Templates = () => {
       {toPairs(allTemplates).map((pair) => {
         const key = pair[0]
         const value = pair[1]
+        console.log(key)
+        console.log(value)
         return (
           <GridListTile key={key}>
-            <TemplatePreview id={key} name={value.name} />
+            <TemplatePreview deleteCallback={() => deleteTemplate(key)} name={value.name} />
           </GridListTile>
         )
       })}
