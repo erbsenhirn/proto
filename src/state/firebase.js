@@ -21,8 +21,10 @@ const rrfConfig = {
 }
 
 firebase.initializeApp(fbConfig)
-firebase.firestore()
-
+const db = firebase.firestore()
+if (location.hostname === 'localhost') {
+  db.useEmulator('localhost', 8080)
+}
 const rrfProps = {
   firebase,
   config: rrfConfig,
