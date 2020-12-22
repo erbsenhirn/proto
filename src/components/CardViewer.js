@@ -7,7 +7,8 @@ import Card from './Card'
 
 const useStyles = makeStyles({
   cardViewer: {
-    position: 'relative'
+    position: 'relative',
+    overflowX: 'clip'
   },
   cardWrapper: {
     position: 'absolute',
