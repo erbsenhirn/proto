@@ -1,32 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { TextField } from '@material-ui/core'
-import { useFirestore } from 'react-redux-firebase'
+
+import { updateProperty } from '../api'
 
 const Property = (props) => {
-  const firestore = useFirestore()
-
-  function onBlur (value) {
-    firestore.collection('Cards').doc(props.cardId).set({
-      [props.name]: value
-    }, { merge: true })
+  function onChange (value) {
+    updateProperty(props.property.slug, value)
   }
 
   return (
     <TextField
       variant='filled'
-      label={ props.label }
-      defaultValue={ props.defaultValue }
-      onBlur = { (event) => onBlur(event.target.value) }
+      label={ props.property.verbose }
+      defaultValue={ props.property.value }
+      onChange = { (event) => onChange(event.target.value) }
     />
   )
 }
 
 Property.propTypes = {
-  cardId: PropTypes.string,
-  name: PropTypes.string,
-  label: PropTypes.string,
-  defaultValue: PropTypes.string
+  property: PropTypes.object
 }
 
 export default Property

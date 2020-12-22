@@ -1,35 +1,28 @@
 import React from 'react'
-import { values, first } from 'lodash'
-import { useSelector } from 'react-redux'
-import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
-import { CircularProgress } from '@material-ui/core'
+import { Box } from '@material-ui/core'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 
+import Text from '../components/Text'
+
 const useStyles = makeStyles({
-  root: props => ({
-    height: props.height,
-    width: props.width,
-    backgroundColor: props.backgroundColor
-  })
+  root: (properties) => (
+    Object.assign({}, ...properties.map((property) => ({ [property.slug]: property.value })))
+  )
 })
 
-const Card = () => {
-  useFirestoreConnect([
-    { collection: 'Cards', queryParams: ['limitToFirst'] }
-  ])
-  const firstCard = first(values(
-    useSelector((state) => state.firestore.data.Cards)
-  ))
-  const classes = useStyles(firstCard)
+const Card = (props) => {
+  const classes = useStyles(props.properties)
 
-  if (!isLoaded(firstCard)) {
-    return <CircularProgress />
-  }
-  if (isEmpty(firstCard)) {
-    return <CircularProgress />
-  }
+  return (
+    <Box className={ classes.root }>
+      <Text value= { 'props.card.elements[0].Text' } />
+    </Box>
+  )
+}
 
-  return <div className={ classes.root }></div>
+Card.propTypes = {
+  properties: PropTypes.object
 }
 
 export default Card

@@ -1,20 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 import 'fontsource-roboto'
+import { FirestoreProvider } from 'react-firestore'
 
-import store from './state/store'
-import rrfProps from './state/firebase'
 import App from './App'
+import { initializedFirebase } from './state/firebase'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
-      </ReactReduxFirebaseProvider>
-    </Provider>
+    <FirestoreProvider firebase={initializedFirebase}>
+      <App />
+    </FirestoreProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
