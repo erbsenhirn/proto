@@ -2,10 +2,12 @@ import React from 'react'
 import { Button, Box } from '@material-ui/core'
 import { Folder, TextFields, Image } from '@material-ui/icons'
 
+import { addElement } from '../api'
+
 const ToolBar = () => {
   return (
     <Box>
-      <Button variant="outlined" color="primary" startIcon={<TextFields />} >
+      <Button onClick={ () => addElement('Text') } variant="outlined" color="primary" startIcon={<TextFields />} >
         Add Text
       </Button>
       <Button variant="outlined" color="primary" startIcon={<Image />} disabled >
