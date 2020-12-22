@@ -2,6 +2,7 @@ import React from 'react'
 import { Box } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
+import { FirestoreCollection } from 'react-firestore'
 
 import Text from '../components/Text'
 
@@ -16,13 +17,26 @@ const Card = (props) => {
 
   return (
     <Box className={ classes.root }>
-      <Text value= { 'props.card.elements[0].Text' } />
+      <FirestoreCollection
+        path='cards/card/elements'
+        render={({ isLoading, data }) => {
+          return isLoading
+            ? (
+                <p>isLoading</p>
+              )
+            : (
+                data.map(element => (
+                  <Text key={ element.id } value={ element.text }/>
+                ))
+              )
+        }}
+      />
     </Box>
   )
 }
 
 Card.propTypes = {
-  properties: PropTypes.object
+  properties: PropTypes.array
 }
 
 export default Card
