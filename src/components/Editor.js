@@ -2,10 +2,10 @@ import React from 'react'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-import ToolBar from '../components/ToolBar'
-import AssetBar from '../components/AssetBar'
-import CardViewer from '../components/CardViewer'
-import PropertyBar from '../components/PropertyBar'
+import ToolBar from './ToolBar'
+import AssetBar from './AssetBar'
+import CardViewer from './CardViewer'
+import PropertyBar from './PropertyBar'
 
 const useStyles = makeStyles({
   toolBar: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   }
 })
 
-const Editor = () => {
+const Editor = (props) => {
   const classes = useStyles()
 
   return (
@@ -41,7 +41,7 @@ const Editor = () => {
       <Box className={ classes.assetBar }>
         <AssetBar />
       </Box>
-      <Box className={ classes.cardViewer }>
+      <Box classame={ classes.cardViewer }>
         <CardViewer />
       </Box>
       <Box className={ classes.propertyBar }>
