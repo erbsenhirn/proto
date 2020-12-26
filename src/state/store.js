@@ -1,19 +1,21 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import logger from 'redux-logger'
-import { routerMiddleware } from 'connected-react-router'
-import { firestoreReducer } from 'redux-firestore'
+import { createSlice, configureStore } from '@reduxjs/toolkit'
 
-import routerReducer, { history } from './router'
-
-const rootReducer = combineReducers({
-  router: routerReducer,
-  firestore: firestoreReducer
+const selectionSlice = createSlice({
+  name: 'selection',
+  initialState: {
+    selection: 'cards/card'
+  },
+  reducers: {
+    changeSelection (state, action) {
+      state.selection = action.payload
+    }
+  }
 })
-const initialState = {}
-const store = createStore(
-  rootReducer,
-  initialState,
-  applyMiddleware(logger, routerMiddleware(history))
-)
+
+export const { changeSelection } = selectionSlice.actions
+
+const store = configureStore({
+  reducer: selectionSlice.reducer
+})
 
 export default store
