@@ -6,15 +6,15 @@ import { updateProperty } from '../api'
 
 const Property = (props) => {
   function onChange (value) {
-    updateProperty(props.property.slug, value)
+    updateProperty(props.slug, value)
   }
 
   return (
     <Box>
       <TextField
         variant='filled'
-        label={ props.property.verbose }
-        defaultValue={ props.property.value }
+        label={ props.verbose }
+        defaultValue={ props.value }
         onChange = { (event) => onChange(event.target.value) }
       />
     </Box>
@@ -22,7 +22,9 @@ const Property = (props) => {
 }
 
 Property.propTypes = {
-  property: PropTypes.object
+  verbose: PropTypes.string,
+  slug: PropTypes.string,
+  value: PropTypes.object
 }
 
 export default Property

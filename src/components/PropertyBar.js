@@ -1,23 +1,26 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
-import { FirestoreCollection } from 'react-firestore'
+import { FirestoreDocument } from 'react-firestore'
 
 import Property from '../components/Property'
 
 const PropertyBar = (props) => {
   return (
     <Box>
-      <FirestoreCollection
-        path='cards/card/properties'
+      <FirestoreDocument
+        path='cards/card'
         render={({ isLoading, data }) => {
           return isLoading
             ? (
                 <div>isLoading</div>
               )
             : (
-                data.map((property) =>
-                  <Property key={ property.slug } property={ property } />
-                )
+                <Box>
+                  <Property verbose='Name' slug='name' value={data.name} />
+                  <Property verbose='Width' slug='width' value={data.width} />
+                  <Property verbose='Height' slug='height' value={data.height} />
+                  <Property verbose='Background Color' slug='backgroundColor' value={data.backgroundColor} />
+                </Box>
               )
         }}
       />

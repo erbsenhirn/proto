@@ -1,27 +1,18 @@
 import db from './state/firebase'
 
 export const addCard = (cardName = 'card') => {
-  const card = db.collection('cards').doc(cardName)
-  card.set({})
-  addProperty('Width', 'width', '9cm')
-  addProperty('Height', 'height', '9cm')
-  addProperty('Background Color', 'backgroundColor', 'black')
-}
-
-export const addProperty = (verbose, slug, value) => {
-  db.collection('cards').doc('card').collection('properties').doc(slug).set(
-    {
-      verbose: verbose,
-      slug: slug,
-      value: value
-    }
-  )
+  db.collection('cards').doc(cardName).set({
+    name: 'Cardname',
+    width: '9cm',
+    height: '9cm',
+    backgroundColor: 'lightgreen'
+  })
 }
 
 export const updateProperty = (slug, value) => {
-  db.collection('cards').doc('card').collection('properties').doc(slug).update(
+  db.collection('cards').doc('card').update(
     {
-      value: value
+      [slug]: value
     }
   )
 }

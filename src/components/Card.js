@@ -7,13 +7,15 @@ import { FirestoreCollection } from 'react-firestore'
 import Text from '../components/Text'
 
 const useStyles = makeStyles({
-  root: (properties) => (
-    Object.assign({}, ...properties.map((property) => ({ [property.slug]: property.value })))
-  )
+  root: (properties) => ({
+    width: properties.width,
+    height: properties.height,
+    backgroundColor: properties.backgroundColor
+  })
 })
 
 const Card = (props) => {
-  const classes = useStyles(props.properties)
+  const classes = useStyles(props.card)
 
   return (
     <Box className={ classes.root }>
@@ -36,7 +38,7 @@ const Card = (props) => {
 }
 
 Card.propTypes = {
-  properties: PropTypes.array
+  card: PropTypes.array
 }
 
 export default Card
