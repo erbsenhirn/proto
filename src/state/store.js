@@ -1,21 +1,36 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit'
+import logger from 'redux-logger'
 
-const selectionSlice = createSlice({
-  name: 'selection',
+const editorSlice = createSlice({
+  name: 'editor',
   initialState: {
-    selection: 'cards/card'
+    selection: 'card/card',
+    card: {
+      name: 'Cardname',
+      width: '9cm',
+      height: '9cm',
+      backgroundColor: 'lightgreen'
+    },
+    elements: []
   },
   reducers: {
     changeSelection (state, action) {
       state.selection = action.payload
+    },
+    updateCard (state, action) {
+      state.card = action.payload
+    },
+    updateElements (state, action) {
+      state.elements = action.payload
     }
   }
 })
 
-export const { changeSelection } = selectionSlice.actions
+export const { changeSelection, updateCard, updateElements } = editorSlice.actions
 
 const store = configureStore({
-  reducer: selectionSlice.reducer
+  reducer: editorSlice.reducer,
+  middleware: [logger]
 })
 
 export default store

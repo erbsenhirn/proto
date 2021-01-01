@@ -1,7 +1,6 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { FirestoreDocument } from 'react-firestore'
 
 import Card from './Card'
 
@@ -23,18 +22,7 @@ const CardViewer = (props) => {
   return (
     <Box className={ classes.cardViewer }>
       <Box className={ classes.cardWrapper }>
-        <FirestoreDocument
-          path='cards/card'
-          render={({ isLoading, data }) => {
-            return isLoading
-              ? (
-                  <div>isLoading</div>
-                )
-              : (
-                  <Card card={ data }/>
-                )
-          }}
-        />
+        <Card />
       </Box>
     </Box>
   )

@@ -1,8 +1,7 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
-import { FirestoreCollection } from 'react-firestore'
+import { useSelector } from 'react-redux'
 
 import Text from '../components/Text'
 
@@ -15,30 +14,17 @@ const useStyles = makeStyles({
 })
 
 const Card = (props) => {
-  const classes = useStyles(props.card)
+  const card = useSelector((state) => state.card)
+  const elements = useSelector((state) => state.elements)
+  const classes = useStyles(card)
 
   return (
     <Box className={ classes.root }>
-      <FirestoreCollection
-        path='cards/card/elements'
-        render={({ isLoading, data }) => {
-          return isLoading
-            ? (
-                <p>isLoading</p>
-              )
-            : (
-                data.map(element => (
-                  <Text key={ element.id } value={ element.text }/>
-                ))
-              )
-        }}
-      />
+      { elements.map(element => (
+        <Text key={ element.id } value={ element.text }/>
+      ))}
     </Box>
   )
-}
-
-Card.propTypes = {
-  card: PropTypes.array
 }
 
 export default Card

@@ -1,29 +1,18 @@
 import React from 'react'
 import { Box } from '@material-ui/core'
-import { FirestoreDocument } from 'react-firestore'
+import { useSelector } from 'react-redux'
 
 import Property from '../components/Property'
 
 const PropertyBar = (props) => {
+  const card = useSelector((state) => state.card)
+
   return (
     <Box>
-      <FirestoreDocument
-        path='cards/card'
-        render={({ isLoading, data }) => {
-          return isLoading
-            ? (
-                <div>isLoading</div>
-              )
-            : (
-                <Box>
-                  <Property verbose='Name' slug='name' value={data.name} />
-                  <Property verbose='Width' slug='width' value={data.width} />
-                  <Property verbose='Height' slug='height' value={data.height} />
-                  <Property verbose='Background Color' slug='backgroundColor' value={data.backgroundColor} />
-                </Box>
-              )
-        }}
-      />
+      <Property verbose='Name' slug='name' value={card.name} />
+      <Property verbose='Width' slug='width' value={card.width} />
+      <Property verbose='Height' slug='height' value={card.height} />
+      <Property verbose='Background Color' slug='backgroundColor' value={card.backgroundColor} />
     </Box>
   )
 }
