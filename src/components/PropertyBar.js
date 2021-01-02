@@ -24,6 +24,17 @@ const PropertyBar = (props) => {
         return (
           <Box>
             <Property verbose='Text' slug='text' value={element.text} />
+            <Property verbose='Text Size' slug='fontSize' value={element.fontSize} />
+            <Property verbose='Text Color' slug='color' value={element.color} />
+            <Property verbose='Background Color' slug='backgroundColor' value={element.backgroundColor} />
+            <Property verbose='Border' slug='border' value={element.border} />
+            <Property verbose='Border Radius' slug='borderRadius' value={element.borderRadius} />
+            <Property verbose='Width' slug='width' value={element.width} />
+            <Property verbose='Height' slug='height' value={element.height} />
+            <Property verbose='X' slug='left' value={element.left} />
+            <Property verbose='Y' slug='top' value={element.top} />
+            <Property verbose='Margin' slug='margin' value={element.margin} />
+            <Property verbose='Padding' slug='padding' value={element.padding} />
           </Box>
         )
       }

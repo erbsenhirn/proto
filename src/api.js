@@ -20,7 +20,18 @@ export const updateProperty = (slug, value) => {
 export const addElement = (text) => {
   db.collection('cards').doc('card').collection('elements').doc().set(
     {
-      text: text
+      text: text,
+      fontSize: '1cm',
+      color: 'black',
+      backgroundColor: 'white',
+      border: '',
+      borderRadius: '0',
+      width: 'auto',
+      height: 'auto',
+      left: 'auto',
+      top: 'auto',
+      margin: '0',
+      padding: '0'
     }
   )
 }
