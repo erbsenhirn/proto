@@ -31,7 +31,7 @@ const Property = (props) => {
 Property.propTypes = {
   verbose: PropTypes.string,
   slug: PropTypes.string,
-  value: PropTypes.object
+  value: PropTypes.string
 }
 
 export default Property
