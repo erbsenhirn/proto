@@ -9,12 +9,10 @@ import store from './state/store'
 import { rrfProps } from './state/firebase'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
-      </ReactReduxFirebaseProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <App />
+    </ReactReduxFirebaseProvider>
+  </Provider>,
   document.getElementById('root')
 )
