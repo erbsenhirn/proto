@@ -23,12 +23,12 @@ const AssetBar = () => {
         </ListItemIcon>
         <ListItemText primary={ card.name } />
       </ListItem>
-      { elements.map(element => (
+      { Object.entries(elements).map(([id, element]) => (
         <ListItem
-        key={ element.id }
+        key={ id }
         button
-        selected={ selection === element.id}
-        onClick={() => dispatch(changeSelection(element.id))}
+        selected={ selection === id}
+        onClick={() => dispatch(changeSelection(id))}
         >
           <ListItemIcon>
             <TextFields />

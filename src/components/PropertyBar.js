@@ -19,8 +19,8 @@ const PropertyBar = (props) => {
       </Box>
     )
   } else {
-    for (const element of elements) {
-      if (element.id === selection) {
+    for (const [id, element] of Object.entries(elements)) {
+      if (id === selection) {
         return (
           <Box>
             <Property verbose='Text' slug='text' value={element.text} />

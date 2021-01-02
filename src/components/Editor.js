@@ -3,7 +3,7 @@ import { Box } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 
 import db from '../state/firebase'
-import { updateCard, updateElements } from '../state/store'
+import { updateCard, updateElement } from '../state/store'
 
 import ToolBar from './ToolBar'
 import AssetBar from './AssetBar'
@@ -19,11 +19,14 @@ const Editor = () => {
 
   db.collection('cards').doc('card').collection('elements')
     .onSnapshot(function (snapshot) {
-      const elements = []
-      snapshot.forEach(function (doc) {
-        elements.push({ id: doc.id, ...doc.data() })
+      snapshot.docChanges().forEach(function (change) {
+        if (change.type === 'added' || change.type === 'modified') {
+          dispatch(updateElement({ id: change.doc.id, data: change.doc.data() }))
+        }
+        if (change.type === 'removed') {
+          console.log('Removed city: ', change.doc.data())
+        }
       })
-      dispatch(updateElements(elements))
     })
 
   return (

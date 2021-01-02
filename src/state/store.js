@@ -11,7 +11,7 @@ const editorSlice = createSlice({
       height: '9cm',
       backgroundColor: 'lightgreen'
     },
-    elements: []
+    elements: {}
   },
   reducers: {
     changeSelection (state, action) {
@@ -20,13 +20,17 @@ const editorSlice = createSlice({
     updateCard (state, action) {
       state.card = action.payload
     },
-    updateElements (state, action) {
-      state.elements = action.payload
+    updateElement (state, action) {
+      state.elements[action.payload.id] = action.payload.data
     }
   }
 })
 
-export const { changeSelection, updateCard, updateElements } = editorSlice.actions
+export const {
+  changeSelection,
+  updateCard,
+  updateElement
+} = editorSlice.actions
 
 const store = configureStore({
   reducer: editorSlice.reducer,
