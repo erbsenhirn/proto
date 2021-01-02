@@ -24,3 +24,11 @@ export const addElement = (text) => {
     }
   )
 }
+
+export const updateElement = (elementId, slug, value) => {
+  db.collection('cards').doc('card').collection('elements').doc(elementId).update(
+    {
+      [slug]: value
+    }
+  )
+}

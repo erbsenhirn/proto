@@ -4,7 +4,7 @@ import logger from 'redux-logger'
 const editorSlice = createSlice({
   name: 'editor',
   initialState: {
-    selection: 'card/card',
+    selection: 'card',
     card: {
       name: 'Cardname',
       width: '9cm',

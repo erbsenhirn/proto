@@ -1,12 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Box, TextField } from '@material-ui/core'
+import { useSelector } from 'react-redux'
 
-import { updateProperty } from '../api'
+import { updateProperty, updateElement } from '../api'
 
 const Property = (props) => {
+  const selection = useSelector((state) => state.selection)
+
   function onChange (value) {
-    updateProperty(props.slug, value)
+    if (selection === 'card') {
+      updateProperty(props.slug, value)
+    } else {
+      updateElement(selection, props.slug, value)
+    }
   }
 
   return (
@@ -14,7 +21,7 @@ const Property = (props) => {
       <TextField
         variant='filled'
         label={ props.verbose }
-        defaultValue={ props.value }
+        value={ props.value }
         onChange = { (event) => onChange(event.target.value) }
       />
     </Box>

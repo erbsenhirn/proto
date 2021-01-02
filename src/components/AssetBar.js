@@ -8,26 +8,27 @@ import { changeSelection } from '../state/store'
 const AssetBar = () => {
   const dispatch = useDispatch()
   const selection = useSelector((state) => state.selection)
+  const card = useSelector((state) => state.card)
   const elements = useSelector((state) => state.elements)
 
   return (
     <List>
       <ListItem
         button
-        selected={ selection === 'card/card'}
-        onClick={() => dispatch(changeSelection('card/card'))}
+        selected={ selection === 'card'}
+        onClick={() => dispatch(changeSelection('card'))}
       >
         <ListItemIcon>
           <CropPortrait />
         </ListItemIcon>
-        <ListItemText primary='Card' />
+        <ListItemText primary={ card.name } />
       </ListItem>
       { elements.map(element => (
         <ListItem
         key={ element.id }
         button
-        selected={ selection === 'element/' + element.id}
-        onClick={() => dispatch(changeSelection('element/' + element.id))}
+        selected={ selection === element.id}
+        onClick={() => dispatch(changeSelection(element.id))}
         >
           <ListItemIcon>
             <TextFields />
