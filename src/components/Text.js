@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 const useStyles = makeStyles({
   root: (properties) => ({
     fontSize: properties.fontSize,
+    textAlign: properties.textAlign,
     color: properties.color,
     backgroundColor: properties.backgroundColor,
     border: properties.border,

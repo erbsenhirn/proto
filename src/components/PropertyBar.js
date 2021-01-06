@@ -25,6 +25,7 @@ const PropertyBar = (props) => {
           <Box>
             <Property verbose='Text' slug='text' value={element.text} />
             <Property verbose='Text Size' slug='fontSize' value={element.fontSize} />
+            <Property verbose='Text Align' slug='textAlign' value={element.textAlign} />
             <Property verbose='Text Color' slug='color' value={element.color} />
             <Property verbose='Background Color' slug='backgroundColor' value={element.backgroundColor} />
             <Property verbose='Border' slug='border' value={element.border} />

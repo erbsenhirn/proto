@@ -22,6 +22,7 @@ export const addElement = (text) => {
     {
       text: text,
       fontSize: '1cm',
+      textAlign: 'left',
       color: 'black',
       backgroundColor: 'white',
       border: '',
