@@ -21,7 +21,7 @@ const Card = (props) => {
   return (
     <Box className={ classes.root }>
       { Object.entries(elements).map(([id, element]) => (
-        <Text key={ id } value={ element.text } data={ element }/>
+        <Text key={ id } data={ element }/>
       ))}
     </Box>
   )

@@ -29,13 +29,12 @@ const Text = (props) => {
 
   return (
     <Box className={ classes.root }>
-      { props.value }
+      { props.data.text }
     </Box>
   )
 }
 
 Text.propTypes = {
-  value: PropTypes.string,
   data: PropTypes.object
 }
 
