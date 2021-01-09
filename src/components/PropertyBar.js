@@ -12,28 +12,28 @@ const PropertyBar = (props) => {
   if (selection === 'card') {
     return (
       <Box>
-        <Property verbose='Name' slug='name' value={card.name} />
-        <Property verbose='Width' slug='width' value={card.width} />
-        <Property verbose='Height' slug='height' value={card.height} />
-        <Property verbose='Background Color' slug='backgroundColor' value={card.backgroundColor} />
+        <Property key='Card Name' verbose='Name' slug='name' value={card.name} />
+        <Property key='Card Width' verbose='Width' slug='width' value={card.width} />
+        <Property key='Card Height' verbose='Height' slug='height' value={card.height} />
+        <Property key='Card Background Color' verbose='Background Color' slug='backgroundColor' value={card.backgroundColor} />
       </Box>
     )
   } else {
     return (
       <Box>
-        <Property verbose='Text' slug='text' value={elements[selection].text} />
-        <Property verbose='Text Size' slug='fontSize' value={elements[selection].fontSize} />
-        <Property verbose='Text Align' slug='textAlign' value={elements[selection].textAlign} />
-        <Property verbose='Text Color' slug='color' value={elements[selection].color} />
-        <Property verbose='Background Color' slug='backgroundColor' value={elements[selection].backgroundColor} />
-        <Property verbose='Border' slug='border' value={elements[selection].border} />
-        <Property verbose='Border Radius' slug='borderRadius' value={elements[selection].borderRadius} />
-        <Property verbose='Width' slug='width' value={elements[selection].width} />
-        <Property verbose='Height' slug='height' value={elements[selection].height} />
-        <Property verbose='X' slug='left' value={elements[selection].left} />
-        <Property verbose='Y' slug='top' value={elements[selection].top} />
-        <Property verbose='Margin' slug='margin' value={elements[selection].margin} />
-        <Property verbose='Padding' slug='padding' value={elements[selection].padding} />
+        <Property key={ selection + ' Text' } verbose='Text' slug='text' value={elements[selection].text} />
+        <Property key={ selection + ' Text Size' } verbose='Text Size' slug='fontSize' value={elements[selection].fontSize} />
+        <Property key={ selection + ' Text Align' } verbose='Text Align' slug='textAlign' value={elements[selection].textAlign} />
+        <Property key={ selection + ' Text Color' } verbose='Text Color' slug='color' value={elements[selection].color} />
+        <Property key={ selection + ' Background Color' } verbose='Background Color' slug='backgroundColor' value={elements[selection].backgroundColor} />
+        <Property key={ selection + ' Border' } verbose='Border' slug='border' value={elements[selection].border} />
+        <Property key={ selection + ' Border Radius' } verbose='Border Radius' slug='borderRadius' value={elements[selection].borderRadius} />
+        <Property key={ selection + ' Width' } verbose='Width' slug='width' value={elements[selection].width} />
+        <Property key={ selection + ' Height' } verbose='Height' slug='height' value={elements[selection].height} />
+        <Property key={ selection + ' X' } verbose='X' slug='left' value={elements[selection].left} />
+        <Property key={ selection + ' Y' } verbose='Y' slug='top' value={elements[selection].top} />
+        <Property key={ selection + ' Margin' } verbose='Margin' slug='margin' value={elements[selection].margin} />
+        <Property key={ selection + ' Padding' } verbose='Padding' slug='padding' value={elements[selection].padding} />
       </Box>
     )
   }
