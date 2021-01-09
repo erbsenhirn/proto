@@ -7,14 +7,9 @@ import { updateProperty, updateElement } from '../api'
 
 const Property = (props) => {
   const selection = useSelector((state) => state.selection)
-
   const [value, setValue] = useState(props.value)
 
-  function onChange (value) {
-    setValue(value)
-  }
-
-  function onBlur (value) {
+  function updateDatabase (value) {
     if (selection === 'card') {
       updateProperty(props.slug, value)
     } else {
@@ -28,8 +23,13 @@ const Property = (props) => {
         variant='filled'
         label={ props.verbose }
         value={ value }
-        onChange = { (event) => onChange(event.target.value) }
-        onBlur = { (event) => onBlur(event.target.value) }
+        onChange = { (event) => setValue(event.target.value) }
+        onKeyDown= { (event) => {
+          if (event.key === 'Enter') {
+            updateDatabase(value)
+          }
+        }}
+        onBlur = { () => updateDatabase(value) }
       />
     </Box>
   )
