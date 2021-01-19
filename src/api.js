@@ -17,15 +17,34 @@ export const updateProperty = (slug, value) => {
   )
 }
 
-export const addElement = (text) => {
+export const addTextElement = (text) => {
   db.collection('cards').doc('card').collection('elements').doc().set(
     {
+      type: 'text',
       text: text,
       fontSize: '1cm',
       textAlign: 'left',
       color: 'black',
       backgroundColor: 'white',
-      border: '',
+      border: 'none',
+      borderRadius: '0',
+      width: 'auto',
+      height: 'auto',
+      left: 'auto',
+      top: 'auto',
+      margin: '0',
+      padding: '0'
+    }
+  )
+}
+
+export const addImageElement = (fileName) => {
+  db.collection('cards').doc('card').collection('elements').doc().set(
+    {
+      type: 'image',
+      image: fileName,
+      backgroundColor: 'white',
+      border: 'none',
       borderRadius: '0',
       width: 'auto',
       height: 'auto',

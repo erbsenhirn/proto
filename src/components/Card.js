@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
 
 import Text from '../components/Text'
+import Image from '../components/Image'
 
 const useStyles = makeStyles({
   root: (properties) => ({
@@ -21,7 +22,9 @@ const Card = (props) => {
   return (
     <Box className={ classes.root }>
       { Object.entries(elements).map(([id, element]) => (
-        <Text key={ id } data={ element }/>
+        (element.type === 'text')
+          ? <Text key={ id } data={ element }/>
+          : <Image key={ id } data={ element }/>
       ))}
     </Box>
   )
