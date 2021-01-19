@@ -1,6 +1,8 @@
 import React from 'react'
 import { Button, Box } from '@material-ui/core'
 import { Folder, TextFields, Image } from '@material-ui/icons'
+import { v4 as uuidv4 } from 'uuid'
+import firebase from 'firebase/app'
 
 import { addTextElement } from '../api'
 
@@ -10,8 +12,15 @@ const ToolBar = () => {
     hiddenFileInput.current.click()
   }
   const handleUpload = event => {
-    const fileUploaded = event.target.files[0]
-    console.log(fileUploaded)
+    const file = event.target.files[0]
+
+    const storageRef = firebase.storage().ref()
+    const uuid = uuidv4()
+    const imageRef = storageRef.child('images/' + uuid)
+
+    imageRef.put(file).then(function (snapshot) {
+      console.log('Uploaded a blob or file!')
+    })
   }
 
   return (
