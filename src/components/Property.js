@@ -6,14 +6,15 @@ import { useSelector } from 'react-redux'
 import { updateProperty, updateElement } from '../api'
 
 const Property = (props) => {
-  const selection = useSelector((state) => state.selection)
+  const selectionId = useSelector((state) => state.selectionId)
+  const selectionType = useSelector((state) => state.selectionId)
   const [value, setValue] = useState(props.value)
 
   function updateDatabase (value) {
-    if (selection === 'card') {
+    if (selectionType === 'card') {
       updateProperty(props.slug, value)
     } else {
-      updateElement(selection, props.slug, value)
+      updateElement(selectionId, props.slug, value)
     }
   }
 

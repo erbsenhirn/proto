@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Box } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
-import firebase from 'firebase/app'
+import { storage } from '../state/firebase'
 
 const useStyles = makeStyles({
   root: (properties) => ({
@@ -19,6 +19,10 @@ const useStyles = makeStyles({
     display: 'inline-block',
     position: 'absolute',
     boxSizing: 'border-box'
+  }),
+  image: (properties) => ({
+    width: properties.width,
+    height: properties.height
   })
 })
 
@@ -27,7 +31,6 @@ const Image = (props) => {
 
   const classes = useStyles(props.data)
 
-  const storage = firebase.storage()
   const pathReference = storage.ref('images/' + props.data.image)
 
   pathReference.getDownloadURL().then(function (url) {
@@ -36,7 +39,7 @@ const Image = (props) => {
 
   return (
     <Box className={ classes.root }>
-      <img src={ imageUrl } />
+      <img className={ classes.image } src={ imageUrl } />
     </Box>
   )
 }

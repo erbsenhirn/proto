@@ -4,7 +4,8 @@ import logger from 'redux-logger'
 const editorSlice = createSlice({
   name: 'editor',
   initialState: {
-    selection: 'card',
+    selectionId: 'card',
+    selectionType: 'card',
     card: {
       name: 'Cardname',
       width: '9cm',
@@ -15,7 +16,8 @@ const editorSlice = createSlice({
   },
   reducers: {
     changeSelection (state, action) {
-      state.selection = action.payload
+      state.selectionId = action.payload.selectionId
+      state.selectionType = action.payload.selectionType
     },
     updateCard (state, action) {
       state.card = action.payload

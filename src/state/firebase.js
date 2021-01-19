@@ -28,6 +28,8 @@ if (location.hostname === 'localhost') {
   db.useEmulator('localhost', 8080)
 }
 
+export const storage = firebase.storage()
+
 export const rrfProps = {
   firebase,
   config: rrfConfig,

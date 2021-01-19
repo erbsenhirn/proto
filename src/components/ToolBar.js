@@ -2,7 +2,7 @@ import React from 'react'
 import { Button, Box } from '@material-ui/core'
 import { Folder, TextFields, Image } from '@material-ui/icons'
 import { v4 as uuidv4 } from 'uuid'
-import firebase from 'firebase/app'
+import { storage } from '../state/firebase'
 
 import { addTextElement, addImageElement } from '../api'
 
@@ -14,7 +14,7 @@ const ToolBar = () => {
   const handleUpload = event => {
     const file = event.target.files[0]
 
-    const storageRef = firebase.storage().ref()
+    const storageRef = storage.ref()
     const uuid = uuidv4()
     const imageRef = storageRef.child('images/' + uuid)
 

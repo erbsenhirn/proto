@@ -42,6 +42,7 @@ export const addImageElement = (fileName) => {
   db.collection('cards').doc('card').collection('elements').doc().set(
     {
       type: 'image',
+      text: '',
       image: fileName,
       backgroundColor: 'white',
       border: 'none',
